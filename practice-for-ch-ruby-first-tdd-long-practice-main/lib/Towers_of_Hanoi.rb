@@ -16,6 +16,10 @@ class Hanoi
         end
         true 
     end 
+
+    def stack(start_idx, end_idx)
+        towers[end_idx] << towers[start_idx].pop
+    end
     
 
 end 

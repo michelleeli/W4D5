@@ -32,8 +32,29 @@ describe "Hanoi" do
             expect(game.valid_move?(4)).to eq(false)
             expect(game.valid_move?(2)).to eq(true)
         end 
-
-             
+    
     end 
+
+    describe '#stack' do 
+        it "should accept a start position and end position as args" do
+            expect{game.stack(0, 1)}.to_not raise_error
+        end
+
+        it "should remove the last disc from the start pos to the end pos" do
+            game.stack(0,1)
+            expect(game.towers).to eq([[8, 7, 6, 5, 4, 3, 2],[1],[]])
+        end
+    end
+
+    describe '#get_index' do
+        it "should print 'enter a start and end position separated with a space like 0 1'" do
+        input = double("0 1\n", :chomp=>"0 1")
+        allow
+
+        end
+
+
+    end
+
 
 end 
