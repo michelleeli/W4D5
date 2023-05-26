@@ -17,9 +17,22 @@ class Hanoi
         true 
     end 
 
-    def stack(start_idx, end_idx)
+    def stack(indices)
+        start_idx, end_idx = indices
         towers[end_idx] << towers[start_idx].pop
     end
-    
 
+    def get_index 
+        p "enter a start and end position separated with a space like 0 1"
+        gets.chomp.split(" ").map { |num| num.to_i}
+    end 
+
+    def play
+        until win?
+            idx = self.get_index
+            self.stack(idx) if self.valid_move?(idx)
+        end 
+    end 
+
+    
 end 

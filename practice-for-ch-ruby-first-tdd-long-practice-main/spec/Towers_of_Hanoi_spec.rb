@@ -36,12 +36,12 @@ describe "Hanoi" do
     end 
 
     describe '#stack' do 
-        it "should accept a start position and end position as args" do
-            expect{game.stack(0, 1)}.to_not raise_error
+        it "should accept start and end indices as an arg" do
+            expect{game.stack([0,1])}.to_not raise_error
         end
 
         it "should remove the last disc from the start pos to the end pos" do
-            game.stack(0,1)
+            game.stack([0,1])
             expect(game.towers).to eq([[8, 7, 6, 5, 4, 3, 2],[1],[]])
         end
     end
@@ -49,12 +49,25 @@ describe "Hanoi" do
     describe '#get_index' do
         it "should print 'enter a start and end position separated with a space like 0 1'" do
         input = double("0 1\n", :chomp=>"0 1")
-        allow
+        allow(game.get_index).to receive(:gets).and_return(input)
 
         end
-
-
     end
 
+    describe '#play' do 
+        it "should #get_index from player until #win?" do 
+            allow(game).to receive(:get_index).and_return([0,1])
+            game.play
+        end 
+    end 
+
+    describe '#win?' do 
+        it "should return 'true' if last tower contains all disks in order" do
+            
+        end  
+        it "should return 'false' if last tower does not contain all disks in order" do 
+            expect(game.win?).to eq(false)
+        end 
+    end 
 
 end 
