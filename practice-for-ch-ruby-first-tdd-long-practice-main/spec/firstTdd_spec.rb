@@ -39,3 +39,11 @@ describe "Array#my_transpose" do
 
 end
 
+describe "Array#stock_picker" do
+    let(:array) {[20, -30, 13, 25, -100]}
+
+    it "outputs the most profitable pair of days on which to first buy the stock and then sell the stock" do
+        expect(array.stock_picker).to eq([2,3])
+    end 
+
+end 
